@@ -3,19 +3,36 @@ import Header from './features/Header';
 import ProductCard from './component/ProductCard';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css' ; 
-const product = {
-  "id": 48,
-  "type": "Product",
-  "title": "나이키 트레일 페가수스",
-  "sub_title": null,
-  "brand_name": null,
-  "price": "183330",
-  "discountPercentage": 40,
-  "image_url": "https://images.unsplash.com/photo-1587245937293-b0510ee4c2be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
-  "brand_image_url": null,
-  "follower": null
-}
+import { useEffect } from 'react';
+import axios from 'axios';
+import { initState } from './store/productSlice';
+import { useSelector, useDispatch } from 'react-redux';
+
 function App() {
+  const dispatch = useDispatch()
+  const products = useSelector(state=>state.products)
+
+  function fetchProduct() {
+    const url = "http://cozshopping.codestates-seb.link/api/v1/products";
+    axios.get(url)
+    .then((response)=> {
+      response.data.sort(function (a, b) {
+        if (a.id > b.id) return 1;
+        if (a.id < b.id) return -1;
+        return 0;
+      });
+      dispatch(initState(response.data));
+    })
+    .catch(function(error) {
+        console.err(error);
+    })
+  }
+
+  useEffect(()=>{
+    fetchProduct()
+  },[])
+
+
   return (
     <div>
       <ToastContainer
@@ -25,7 +42,6 @@ function App() {
         hideProgressBar={true}
       />
       <Header/>
-      <ProductCard product={product}></ProductCard>
     </div>
   );
 }
