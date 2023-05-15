@@ -10,6 +10,7 @@ import { Routes, Route } from 'react-router-dom';
 import MainPage from './page/MainPage';
 import Footer from './component/Footer';
 import ProductPage from './page/ProductPage';
+import BookmarkPage from './page/BookmarkPage';
 function App() {
   const dispatch = useDispatch()
 
@@ -46,6 +47,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage></MainPage>}/>
         <Route path="/products/list" element={<ProductPage></ProductPage>}/>
+        <Route path="/bookmark" element={<BookmarkPage></BookmarkPage>}/>
       </Routes>
       <Footer/>
     </div>
