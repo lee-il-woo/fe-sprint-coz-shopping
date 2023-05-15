@@ -29,13 +29,13 @@ export default function ProductList({listTitle}){
             return null; 
         }
         if(listTitle === '상품 리스트'){
-            return randomFourProductIds.map((productId)=>{
-                return <ProductCard product={products[productId]}></ProductCard>
+            return randomFourProductIds.map((productId,idx)=>{
+                return <ProductCard key={idx} product={products[productId]}></ProductCard>
             })
         }else if(listTitle === '북마크 리스트'){
             const randomBookmarks = generateRandomBookmarks()
-            return randomBookmarks.map((productId)=>{
-                return <ProductCard product={products[productId]}></ProductCard>
+            return randomBookmarks.map((productId,idx)=>{
+                return <ProductCard key={idx} product={products[productId]}></ProductCard>
             })
         }
     }

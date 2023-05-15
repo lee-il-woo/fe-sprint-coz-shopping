@@ -37,7 +37,7 @@ export default function ProductPage() {
       
       <ProductListContainer>
       <FilterProduct getFilterdProducts={getFilterdProducts}/>
-        <div className='flex flex-wrap mt-7 justify-between'>
+        <div className={displayProducts.length < 4? 'flex flex-wrap mt-7':'flex flex-wrap mt-7 justify-between'}>
         {displayProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

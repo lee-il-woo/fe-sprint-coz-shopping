@@ -10,7 +10,7 @@ const StyledDiv = styled.div`
   width: 100%;
   height: 210px;
   border-radius: 2rem;
-  background: ${props => props.imageUrl ? `url(${props.imageUrl}) center / cover` : 'gray'};
+  background: ${props => props.imageurl ? `url(${props.imageurl}) center / cover` : 'gray'};
   position: relative;
     div{
         position: absolute;
@@ -47,7 +47,7 @@ export default function ProductCard({product}){
     return(
         <div className="card-container mr-6">
             {isModal?<ProductModal imgUrl={imgUrl} setIsModal={setIsModal} isBookmark={isBookmark} bookmarkIconHandler={bookmarkIconHandler} title={title}/>:null}
-            <StyledDiv imageUrl={imgUrl} onClick={()=>{setIsModal(!isModal)}}>
+            <StyledDiv imageurl={imgUrl} onClick={()=>{setIsModal(!isModal)}}>
                 <div onClick={(e)=>{bookmarkIconHandler(e)}} className={isBookmark? 'bookmark-check':'bookmark-uncheck'}>
                     <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
                 </div>
