@@ -1,0 +1,13 @@
+.card-container{
+    width: 16.5rem;
+    height: 16.5rem;
+}
+
+.card-img-wrap{
+    width: 16.5rem;
+    height: 13.125rem;
+}
+
+.discount-color{
+    color:#452CDD;
+}
