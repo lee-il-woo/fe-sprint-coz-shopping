@@ -45,7 +45,7 @@ export default function ProductCard({product}){
     }
 
     return(
-        <div className="card-container">
+        <div className="card-container mr-6">
             {isModal?<ProductModal imgUrl={imgUrl} setIsModal={setIsModal} isBookmark={isBookmark} bookmarkIconHandler={bookmarkIconHandler} title={title}/>:null}
             <StyledDiv imageUrl={imgUrl} onClick={()=>{setIsModal(!isModal)}}>
                 <div onClick={(e)=>{bookmarkIconHandler(e)}} className={isBookmark? 'bookmark-check':'bookmark-uncheck'}>
@@ -60,7 +60,6 @@ export default function ProductCard({product}){
                 <div>{product.type==="Exhibition"?product.sub_title:''}</div>
                 <div>{product.price?formatToNumber(product.price)+'원':product.follower?formatToNumber(product.follower):''}</div>
             </div>
-            
         </div>
     )
 }
