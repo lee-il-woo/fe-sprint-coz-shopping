@@ -1,8 +1,9 @@
 import ProductList from "../component/ProductList"
 import { styled } from "styled-components";
-const ProductListContainer = styled.div`
+export const ProductListContainer = styled.div`
   width: 67%;
   min-width:1280px;
+  max-width:1920px;
 `;
 
 export default function MainPage(){

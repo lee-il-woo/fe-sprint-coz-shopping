@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import MainPage from './page/MainPage';
 import Footer from './component/Footer';
+import ProductPage from './page/ProductPage';
 function App() {
   const dispatch = useDispatch()
 
@@ -44,6 +45,7 @@ function App() {
       <Header/>
       <Routes>
         <Route path="/" element={<MainPage></MainPage>}/>
+        <Route path="/products/list" element={<ProductPage></ProductPage>}/>
       </Routes>
       <Footer/>
     </div>
