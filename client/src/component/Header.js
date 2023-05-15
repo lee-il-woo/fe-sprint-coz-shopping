@@ -1,7 +1,5 @@
 import './Header.css'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import DropDown from '../component/DropDown';
+import DropDown from './DropDown';
 import { useNavigate } from 'react-router-dom';
 export default function Header() {
   const navigate = useNavigate()

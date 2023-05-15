@@ -1,16 +1,16 @@
 import './App.css';
-import Header from './features/Header';
-import ProductCard from './component/ProductCard';
+import Header from './component/Header';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css' ; 
 import { useEffect } from 'react';
 import axios from 'axios';
 import { initState } from './store/productSlice';
-import { useSelector, useDispatch } from 'react-redux';
-
+import { useDispatch } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
+import MainPage from './page/MainPage';
+import Footer from './component/Footer';
 function App() {
   const dispatch = useDispatch()
-  const products = useSelector(state=>state.products)
 
   function fetchProduct() {
     const url = "http://cozshopping.codestates-seb.link/api/v1/products";
@@ -42,6 +42,10 @@ function App() {
         hideProgressBar={true}
       />
       <Header/>
+      <Routes>
+        <Route path="/" element={<MainPage></MainPage>}/>
+      </Routes>
+      <Footer/>
     </div>
   );
 }
