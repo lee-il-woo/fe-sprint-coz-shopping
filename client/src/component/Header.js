@@ -1,24 +1,44 @@
-import './Header.css'
 import DropDown from './DropDown';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+
+const HeaderContainer = styled.div`
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+  height: 80px;
+  position: relative;
+`;
+
 export default function Header() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <>
-      <div className='header-container w-screen flex items-center justify-between'>
-        <div className='logo-wrap flex ml-20'>
-          <div className='hover:cursor-pointer' onClick={()=>{navigate('/')}}>
-            <img src='/codestate_logo.png' alt='codestate logo' className='logo-image'></img>
+      <HeaderContainer className='w-screen flex items-center justify-between'>
+        <div className='flex ml-20'>
+          <div
+            className='hover:cursor-pointer'
+            onClick={() => {
+              navigate('/');
+            }}
+          >
+            <img
+              src='/codestate_logo.png'
+              alt='codestate logo'
+              className='logo-image'
+            ></img>
           </div>
-          <div className="logo-name ml-3 hover:cursor-pointer" onClick={()=>{navigate('/')}}>
+          <div
+            className='flex items-center font-bold text-3xl ml-3 hover:cursor-pointer'
+            onClick={() => {
+              navigate('/');
+            }}
+          >
             <p>COZ Shopping</p>
           </div>
         </div>
-        <div className='side-btn mr-20 hover:cursor-pointer' >
-        <DropDown/>
+        <div className='text-3xl mr-20 hover:cursor-pointer'>
+          <DropDown />
         </div>
-        
-      </div>
+      </HeaderContainer>
     </>
   );
 }

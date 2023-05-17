@@ -1,33 +1,40 @@
-import { useState } from "react";
-import './FilterProduct.css'
-export default function FilterProduct({getFilterdProducts}) {
-    const [clickedFilter, setClickedFilter] = useState('every')
-    const handleFilterClick = (type)=>{
-        getFilterdProducts(type)
-        setClickedFilter(type)
-    }
+import { useState } from 'react';
+import styled from 'styled-components';
+
+const FilterName = styled.span`
+  ${(props) =>
+    props.clicked &&
+    'color:#412DD4;font-weight: 700;border-bottom:4px solid #412DD4;'}
+`;
+
+const ProductType = {
+  EVERY: 'Every',
+  PRODUCT: 'Product',
+  CATEGORY: 'Category',
+  EXHIBITION: 'Exhibition',
+  BRAND: 'Brand',
+};
+
+export default function FilterProduct({ getFilterdProducts }) {
+  const [clickedFilter, setClickedFilter] = useState(ProductType.EVERY);
+  const filterTypes = Object.values(ProductType);
+  const handleFilterClick = (type) => {
+    getFilterdProducts(type);
+    setClickedFilter(type);
+  };
+
   return (
-    <div className="flex justify-center">
-      <div className="text-center mr-9 hover:cursor-pointer" onClick={()=>{handleFilterClick('every')}}>
-        <img src='/every.png' alt='all product'></img>
-        <span className={clickedFilter === 'every'?'clicked-filter':''}>전체</span>
-      </div>
-      <div className="text-center mr-9 hover:cursor-pointer" onClick={()=>{handleFilterClick('Product')}}>
-        <img src='/product.png' alt='filter product'></img>
-        <span className={clickedFilter === 'Product'?'clicked-filter':''}>상품</span>
-      </div>
-      <div className="text-center mr-9 hover:cursor-pointer" onClick={()=>{handleFilterClick('Category')}}>
-        <img src='/category.png' alt='filter category'></img>
-        <span className={clickedFilter === 'Category'?'clicked-filter':''}>카테고리</span>
-      </div>
-      <div className="text-center mr-9 hover:cursor-pointer" onClick={()=>{handleFilterClick('Exhibition')}}>
-        <img src='/exhibition.png' alt='filter exhibition'></img>
-        <span className={clickedFilter === 'Exhibition'?'clicked-filter':''}>기획전</span>
-      </div>
-      <div className="text-center hover:cursor-pointer" onClick={()=>{handleFilterClick('Brand')}}>
-        <img src='/brand.png' alt='filter brand'></img>
-        <span className={clickedFilter === 'Brand'?'clicked-filter':''}>브랜드</span>
-      </div>
+    <div className='flex justify-center'>
+      {filterTypes.map((type) => (
+        <div
+          key={type}
+          className='text-center mr-9 hover:cursor-pointer'
+          onClick={() => handleFilterClick(type)}
+        >
+          <img src={`/filterIcon/${type}.png`} alt={`Filter by ${type}`} />
+          <FilterName clicked={clickedFilter === type}>{type}</FilterName>
+        </div>
+      ))}
     </div>
   );
 }

@@ -4,43 +4,45 @@ import { useSelector } from 'react-redux';
 import ProductCard from '../component/ProductCard';
 import { useState, useEffect } from 'react';
 import FilterProduct from '../component/FilterProduct';
+
 export default function ProductPage() {
+  const everyType = 'Every';
+  const LOAD_PRODUCT_COUNT = 12;
   const [productIndex, setProductIndex] = useState(0);
   const [displayProducts, setDisplayProducts] = useState([]);
   const products = useSelector((state) => state.products);
   const [filteredProducts, setFilteredProducts] = useState(products);
-  const getFilterdProducts = (type)=>{
-    if(type === 'every') setFilteredProducts(products)
-    else{
-      setFilteredProducts(products.filter(el=>el.type === type))
-    }
-  }
-  const { ref, inView } = useInView({
-    threshold: 0,
-  });
+  const { ref, inView } = useInView({ threshold: 0 });
+
+  const getFilterdProducts = (type) => {
+    if (type === everyType) setFilteredProducts(products);
+    else setFilteredProducts(products.filter((el) => el.type === type));
+  };
 
   useEffect(() => {
-    setDisplayProducts(filteredProducts.slice(0, 12));
-    setProductIndex(12);
+    setDisplayProducts(filteredProducts.slice(0, LOAD_PRODUCT_COUNT));
+    setProductIndex(LOAD_PRODUCT_COUNT);
   }, [filteredProducts]);
 
   useEffect(() => {
     if (inView && productIndex < filteredProducts.length) {
-      const moreProducts = filteredProducts.slice(productIndex, productIndex + 12);
+      const moreProducts = filteredProducts.slice(
+        productIndex,
+        productIndex + LOAD_PRODUCT_COUNT
+      );
       setDisplayProducts((prevProducts) => [...prevProducts, ...moreProducts]);
-      setProductIndex((prevIndex) => prevIndex + 12);
+      setProductIndex((prevIndex) => prevIndex + LOAD_PRODUCT_COUNT);
     }
   }, [inView]);
 
   return (
     <div className='flex justify-center mt-12'>
-      
       <ProductListContainer>
-      <FilterProduct getFilterdProducts={getFilterdProducts}/>
-        <div className={displayProducts.length < 4? 'flex flex-wrap mt-7':'flex flex-wrap mt-7 justify-between'}>
-        {displayProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        <FilterProduct getFilterdProducts={getFilterdProducts} />
+        <div className='flex flex-wrap mt-7 justify-evenly'>
+          {displayProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         </div>
         <div ref={ref} />
       </ProductListContainer>
