@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import {productType} from '../utils/productType'
 
 const FilterName = styled.span`
   ${(props) =>
@@ -7,17 +8,9 @@ const FilterName = styled.span`
     'color:#412DD4;font-weight: 700;border-bottom:4px solid #412DD4;'}
 `;
 
-const ProductType = {
-  EVERY: 'Every',
-  PRODUCT: 'Product',
-  CATEGORY: 'Category',
-  EXHIBITION: 'Exhibition',
-  BRAND: 'Brand',
-};
-
 export default function FilterProduct({ getFilterdProducts }) {
-  const [clickedFilter, setClickedFilter] = useState(ProductType.EVERY);
-  const filterTypes = Object.values(ProductType);
+  const [clickedFilter, setClickedFilter] = useState(productType.EVERY);
+  const filterTypes = Object.values(productType);
   const handleFilterClick = (type) => {
     getFilterdProducts(type);
     setClickedFilter(type);

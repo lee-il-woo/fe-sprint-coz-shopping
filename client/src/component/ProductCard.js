@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleBookmark } from '../store/bookmarkSlice';
 import { useState } from 'react';
 import ProductModal from './ProductModal';
+import {productType} from '../utils/productType'
+import { formatNumberWithCommas } from '../utils/formatNumberWithCommas';
 
 const ImageWrap = styled.div`
   width: 100%;
@@ -54,10 +56,6 @@ export default function ProductCard({ product }) {
   const title = product.title || product.brand_name;
   const isBookmarked = bookmarks.some((bookmark) => bookmark.id === product.id);
 
-  const formatToNumber = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  };
-
   const bookmarkIconHandler = (e) => {
     e.stopPropagation();
     dispatch(toggleBookmark(product));
@@ -93,7 +91,7 @@ export default function ProductCard({ product }) {
       </ImageWrap>
       <div className='flex justify-between mt-1.5'>
         <div className='font-extrabold text-base'>
-          {product.type === 'Category' ? '#' + product.title : title}
+          {product.type === productType.CATEGORY ? '#' + product.title : title}
         </div>
         <div
           className={
@@ -110,12 +108,12 @@ export default function ProductCard({ product }) {
         </div>
       </div>
       <div className='flex justify-between'>
-        <div>{product.type === 'Exhibition' ? product.sub_title : ''}</div>
+        <div>{product.type === productType.Exhibition ? product.sub_title : ''}</div>
         <div>
           {product.price
-            ? formatToNumber(product.price) + '원'
+            ? formatNumberWithCommas(product.price) + '원'
             : product.follower
-            ? formatToNumber(product.follower)
+            ? formatNumberWithCommas(product.follower)
             : ''}
         </div>
       </div>
