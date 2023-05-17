@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ProductCard from './ProductCard';
-
-const listTitles = {
-  PRODUCT: '상품 리스트',
-  BOOKMARK: '북마크 리스트',
-};
+import {listTitles} from '../utils/listTitles'
 
 const generateRandomIds = (count, max) => {
   let arr = [];
