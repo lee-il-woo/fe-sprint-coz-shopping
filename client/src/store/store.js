@@ -5,6 +5,6 @@ import productReducer from './productSlice';
 export const store = configureStore({
   reducer: {
     bookmark: bookmarkReducer,
-    products: productReducer
+    products: productReducer,
   },
 });
