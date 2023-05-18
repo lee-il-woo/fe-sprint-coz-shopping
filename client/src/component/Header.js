@@ -12,7 +12,7 @@ export default function Header() {
   const navigate = useNavigate();
   return (
     <>
-      <HeaderContainer className='w-screen flex items-center justify-between'>
+      <HeaderContainer className='w-full flex items-center justify-between'>
         <div className='flex ml-20'>
           <div
             className='hover:cursor-pointer'
