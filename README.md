@@ -37,24 +37,24 @@ src<br>
 |   |-- Header.js<br>
 |   |-- ProductCard.js<br>
 |   |-- ProductList.js<br>
-|   `-- ProductModal.js<br>
+|   |-- ProductModal.js<br>
 |-- index.css<br>
 |-- index.js<br>
 |-- logo.svg<br>
 |-- page **각 페이지에 해당하는 리액트 컴포넌트들이 저장된 폴더.** <br>
 |   |-- BookmarkPage.js<br>
 |   |-- MainPage.js<br>
-|   `-- ProductPage.js<br>
+|   |-- ProductPage.js<br>
 |-- reportWebVitals.js<br>
 |-- setupTests.js<br>
 |-- store **Redux를 사용한 상태 관리 코드가 저장된 폴더.** <br>
 |   |-- bookmarkSlice.js<br>
 |   |-- productSlice.js<br>
-|   `-- store.js<br>
-`-- utils **재사용 가능한 함수 및 데이터가 저장된 폴더.** <br>
+|   |-- store.js<br>
+|-- utils **재사용 가능한 함수 및 데이터가 저장된 폴더.** <br>
     |-- formatNumberWithCommas.js<br>
     |-- listTitles.js<br>
-    `-- productType.js<br>
+    |-- productType.js<br>
 
 ## 실행 방법
 프로젝트를 로컬에서 실행하려면 다음의 단계를 따르세요:
