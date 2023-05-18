@@ -30,7 +30,7 @@ src<br>
 |-- App.css<br>
 |-- App.js<br>
 |-- App.test.js<br>
-|-- component **각 페이지에 해당하는 리액트 컴포넌트들이 저장된 폴더.**<br>
+|-- component **각 페이지에 해당하는 리액트 컴포넌트들이 저장된 폴더.** <br>
 |   |-- DropDown.js<br>
 |   |-- FilterProduct.js<br>
 |   |-- Footer.js<br>
@@ -41,17 +41,17 @@ src<br>
 |-- index.css<br>
 |-- index.js<br>
 |-- logo.svg<br>
-|-- page **각 페이지에 해당하는 리액트 컴포넌트들이 저장된 폴더.**<br>
+|-- page **각 페이지에 해당하는 리액트 컴포넌트들이 저장된 폴더.** <br>
 |   |-- BookmarkPage.js<br>
 |   |-- MainPage.js<br>
 |   `-- ProductPage.js<br>
 |-- reportWebVitals.js<br>
 |-- setupTests.js<br>
-|-- store **Redux를 사용한 상태 관리 코드가 저장된 폴더.**<br>
+|-- store **Redux를 사용한 상태 관리 코드가 저장된 폴더.** <br>
 |   |-- bookmarkSlice.js<br>
 |   |-- productSlice.js<br>
 |   `-- store.js<br>
-`-- utils **재사용 가능한 함수 및 데이터가 저장된 폴더.**<br>
+`-- utils **재사용 가능한 함수 및 데이터가 저장된 폴더.** <br>
     |-- formatNumberWithCommas.js<br>
     |-- listTitles.js<br>
     `-- productType.js<br>
